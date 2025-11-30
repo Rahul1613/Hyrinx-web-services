@@ -37,11 +37,16 @@ android/build/
 android/.idea/
 android/local.properties
 android/app/release/
+android/app/src/main/assets/public/
 *.apk
 *.aab
 *.jks
 *.keystore
 keystore.properties
+
+# Large video files (use Git LFS or exclude)
+*.mp4
+!src/assets/videos/*.mp4
 
 # Capacitor
 .capacitor/
