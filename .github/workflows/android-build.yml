@@ -36,15 +36,17 @@ jobs:
     
     - name: Sync Capacitor
       run: |
-        npx cap init "HYRINX Web Services" "com.hyrinx.webservices" --web-dir=dist || true
-        npx cap add android || true
+        if [ ! -d "android" ]; then
+          npx cap init "HYRINX Web Services" "com.hyrinx.webservices" --web-dir=dist
+          npx cap add android
+        fi
         npx cap sync android
     
     - name: Build AAB
       run: |
         cd android
         chmod +x gradlew
-        ./gradlew bundleRelease
+        ./gradlew bundleRelease --no-daemon
       continue-on-error: false
     
     - name: Upload AAB
@@ -58,7 +60,7 @@ jobs:
       run: |
         cd android
         chmod +x gradlew
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --no-daemon
       continue-on-error: true
     
     - name: Upload APK
