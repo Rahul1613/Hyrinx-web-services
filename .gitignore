@@ -44,9 +44,9 @@ android/app/src/main/assets/public/
 *.keystore
 keystore.properties
 
-# Large video files (use Git LFS or exclude)
+# Large video files (exclude from git - too large for GitHub)
+src/assets/videos/*.mp4
 *.mp4
-!src/assets/videos/*.mp4
 
 # Capacitor
 .capacitor/
