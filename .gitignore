@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/dist
+/build
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+android/.idea/
+android/local.properties
+android/app/release/
+*.apk
+*.aab
+*.jks
+*.keystore
+keystore.properties
+
+# Capacitor
+.capacitor/
+ios/
+
+# Server
+server/uploads/
+server/.env

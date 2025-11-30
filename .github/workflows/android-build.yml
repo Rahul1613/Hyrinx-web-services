@@ -1,0 +1,64 @@
+name: Build Android App
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build web app
+      run: npm run build
+    
+    - name: Sync Capacitor
+      run: |
+        npx cap sync android
+    
+    - name: Build AAB
+      run: |
+        cd android
+        ./gradlew bundleRelease
+    
+    - name: Upload AAB
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release
+        path: android/app/build/outputs/bundle/release/app-release.aab
+        retention-days: 30
+    
+    - name: Build APK (for testing)
+      run: |
+        cd android
+        ./gradlew assembleRelease
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release-apk
+        path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+        retention-days: 30
+

@@ -1,0 +1,36 @@
+{
+  "name": "hyrinx-website",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "framer-motion": "^10.16.16",
+    "@capacitor/core": "^5.5.1",
+    "@capacitor/cli": "^5.5.1",
+    "@capacitor/android": "^5.5.1",
+    "@capacitor/app": "^5.0.6",
+    "@capacitor/haptics": "^5.0.6",
+    "@capacitor/keyboard": "^5.0.6",
+    "@capacitor/status-bar": "^5.0.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.8"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "android:init": "npm run build && npx cap init \"HYRINX Web Services\" \"com.hyrinx.webservices\" --web-dir=dist && npx cap add android && npx cap sync android",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:build": "cd android && gradlew bundleRelease",
+    "android:build:debug": "cd android && gradlew assembleDebug",
+    "android:open": "npx cap open android"
+  }
+}
+

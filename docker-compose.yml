@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: hyrinx-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: hyrinx_webservices
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: hyrinx-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://mongodb:27017/hyrinx_webservices
+      PORT: 5000
+    depends_on:
+      - mongodb
+    volumes:
+      - ./server/uploads:/app/uploads
+
+volumes:
+  mongodb_data:
+

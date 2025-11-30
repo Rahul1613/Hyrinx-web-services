@@ -1,0 +1,26 @@
+{
+	"appId": "com.hyrinx.webservices",
+	"appName": "HYRINX Web Services",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https",
+		"cleartext": true
+	},
+	"android": {
+		"allowMixedContent": true
+	},
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 2000,
+			"launchAutoHide": true,
+			"backgroundColor": "#000000",
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP",
+			"showSpinner": false,
+			"androidSpinnerStyle": "large",
+			"spinnerColor": "#6C47FF",
+			"splashFullScreen": true,
+			"splashImmersive": true
+		}
+	}
+}
