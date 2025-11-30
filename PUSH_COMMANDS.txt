@@ -1,0 +1,18 @@
+# Commands to Push to GitHub
+
+# Step 1: Complete the commit (remove large files)
+git add .gitignore
+git commit -m "Exclude large video files from Android assets - will be synced during build"
+
+# Step 2: Push to GitHub
+git push -u origin main
+
+# If authentication is required:
+# - Username: Rahul1613
+# - Password: Use Personal Access Token (not your GitHub password)
+#   Get token from: https://github.com/settings/tokens
+
+# Alternative: If push fails due to large files still in history, use:
+# git push -u origin main --force
+# (Only use --force if you're sure, as it overwrites remote history)
+
