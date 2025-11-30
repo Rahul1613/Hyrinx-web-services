@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import servicesVideo from '../assets/videos/services-background.mp4'
+// Video is now served from the public directory
+const servicesVideo = '/videos/services-background.mp4'
 import servicesImage from '../assets/images/services-image.jpg'
 import studentImage from '../assets/images/student-image.jpg'
 import businessImage from '../assets/images/business-image.jpg'
